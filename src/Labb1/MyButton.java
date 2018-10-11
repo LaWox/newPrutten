@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MyButton extends JButton implements ActionListener {
+    // Git-test
     State state1;
     State state2;
     JButton myBtn;
