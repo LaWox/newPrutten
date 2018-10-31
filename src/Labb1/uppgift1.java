@@ -8,7 +8,7 @@ public class uppgift1 extends JFrame {
     JPanel panel;
 
     public uppgift1(){
-        this.window=new JFrame("Uppgift1");
+        this.window=new JFrame("Jussi K, Platon W");
         this.panel=new JPanel();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel.setBackground(Color.green);

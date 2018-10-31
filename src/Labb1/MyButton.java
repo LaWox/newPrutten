@@ -23,6 +23,10 @@ public class MyButton extends JButton implements ActionListener {
         myBtn.validate();
     }
 
+    public String toString(){
+        return this.state2 + " : " + this.state2;
+    }
+
     public void toggleState(){
         if(this.state1.active){
             this.myBtn.setText(state2.btnText);
@@ -57,5 +61,9 @@ class State{
         this.color = c1;
         this.btnText = txt;
         this.active = false;
+    }
+
+    public String toString(){
+        return this.btnText;
     }
 }
