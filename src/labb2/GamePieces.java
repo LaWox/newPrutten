@@ -4,8 +4,12 @@ public class GamePieces {
     int value;
     //int[] position;
 
-    public GamePieces(int value, int[] position){
+    public GamePieces(int value){
         this.value = value;
-        //this.position = position;
     }
+
+    public String toString(){
+        return String.valueOf(this.value);
+    }
+
 }
