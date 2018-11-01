@@ -2,11 +2,11 @@ package labb2;
 
 public class FifteenModel implements Boardgame {
 
-    private int size = 4;
+    private int size;
     private Board new_board;
     private boolean moveCompleted;
 
-    public FifteenModel(){
+    public FifteenModel(int size){
         this.new_board= new Board(size);
         this.new_board.setUp();
         this.scramble(10000);
@@ -71,10 +71,10 @@ public class FifteenModel implements Boardgame {
     }
 
     public static void main(String[] args){
-        FifteenModel new_fifteenModel = new FifteenModel();
-        new_fifteenModel.new_board.printBoard();
-        new_fifteenModel.move(2, 2);
-        new_fifteenModel.new_board.printBoard();
+        //FifteenModel new_fifteenModel = new FifteenModel();
+        //new_fifteenModel.new_board.printBoard();
+        //new_fifteenModel.move(2, 2);
+        //new_fifteenModel.new_board.printBoard();
 
     }
 
