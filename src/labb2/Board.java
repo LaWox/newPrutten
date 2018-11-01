@@ -1,5 +1,6 @@
 package labb2;
 
+
 public class Board {
     int size;
     public GamePieces[][] board_matrix;
@@ -31,7 +32,7 @@ public class Board {
     public void printBoard(){
         for (int j = 0; j<this.size; j++) {
             for (int i = 0; i < this.size; i++) {
-                System.out.print(this.board_matrix[j][i]+ " ");
+                System.out.println(this.board_matrix[j][i]+ " ");
             }
             System.out.println();
 
