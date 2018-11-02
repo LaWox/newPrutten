@@ -4,7 +4,7 @@ import java.util.*;
 class  Text15 {
     public static void main(String[] u) {
         Scanner scan = new Scanner(System.in);
-        Boardgame thegame = new FifteenModel();
+        Boardgame thegame = new FifteenModel(4);
         System.out.println("\nWelcome to Fifteen puzzle\n");
         while (true) {
             // Print out the current status

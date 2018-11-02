@@ -2,12 +2,13 @@ package labb2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ViewControl extends JFrame{
+public class ViewControl extends JFrame implements ActionListener {
 
     private Boardgame game;
-    private JButton[][] board;
+    private Squares[][] board;
     private JLabel mess = new JLabel();
     private JPanel panel;
     private int n;
@@ -17,15 +18,20 @@ public class ViewControl extends JFrame{
         this.n = n;
         //this.game=gm;
         this.frame = new JFrame("Game");
-        this.board = new JButton[n][n];
+        this.board = new Squares[n][n];
         this.panel = new JPanel(new GridLayout(n,n));
 
+    }
+
+    public void actionPerformed(ActionEvent e){
+        System.out.println(this);
     }
 
     private void add_buttons(){
         for(int i=0; i<this.n; i++){
             for(int j=0; j<this.n; j++){
-                this.board[i][j] = new JButton("");
+                this.board[i][j] = new Squares(i, j);
+                this.board[i][j].addActionListener(this);
                 this.panel.add(this.board[i][j]);
             }
         }
@@ -57,7 +63,7 @@ public class ViewControl extends JFrame{
         vc.add_buttons();
 
         vc.frame.add(vc.panel);
-        vc.rePaint();
+        //vc.rePaint();
         vc.frame.validate();
     }
 }
