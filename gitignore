@@ -3,6 +3,7 @@
 
 # XML-files
 workspace.xml
+tasks.xml
 
 # Log file
 *.log
