@@ -32,7 +32,7 @@ public class ViewControl extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         Object btn = e.getSource();
         if(btn instanceof Squares){
-            System.err.println(((Squares) btn).i + " " + ((Squares) btn).j);
+            //System.err.println(((Squares) btn).i + " " + ((Squares) btn).j);
             this.game.move(((Squares) btn).i, ((Squares) btn).j);
             //this.label.setText(this.game.getMessage());
             JOptionPane.showMessageDialog(null, this.game.getMessage());
@@ -87,9 +87,5 @@ public class ViewControl extends JFrame implements ActionListener{
 
         vc.rePaint();
 
-
-        while(true){
-
-        }
     }
 }
