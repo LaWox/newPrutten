@@ -13,6 +13,7 @@ public class ViewControl extends JFrame implements ActionListener{
     private JPanel panel;
     private int n;
     private JFrame frame;
+    private JLabel label;
 
     ViewControl (Boardgame gm, int n){
         this.n = n;
@@ -20,6 +21,11 @@ public class ViewControl extends JFrame implements ActionListener{
         this.frame = new JFrame("Game");
         this.board = new Squares[n][n];
         this.panel = new JPanel(new GridLayout(n,n));
+        //this.label=new JLabel("");
+        //this.label.setLayout(new GridLayout(1,1));
+
+
+
 
     }
 
@@ -28,6 +34,11 @@ public class ViewControl extends JFrame implements ActionListener{
         if(btn instanceof Squares){
             System.err.println(((Squares) btn).i + " " + ((Squares) btn).j);
             this.game.move(((Squares) btn).i, ((Squares) btn).j);
+            //this.label.setText(this.game.getMessage());
+            JOptionPane.showMessageDialog(null, this.game.getMessage());
+            rePaint();
+
+
         }
     }
 
@@ -67,12 +78,18 @@ public class ViewControl extends JFrame implements ActionListener{
         vc.panel.setVisible(true);
         vc.panel.setBackground(Color.BLUE);
 
-        vc.add_buttons();
 
+        vc.add_buttons();
+        //vc.panel.add(vc.label);
         vc.frame.add(vc.panel);
 
+
+
+        vc.rePaint();
+
+
         while(true){
-            vc.rePaint();
+
         }
     }
 }
