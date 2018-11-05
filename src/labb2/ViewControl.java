@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ViewControl extends JFrame implements ActionListener {
+public class ViewControl extends JFrame implements ActionListener{
 
     private Boardgame game;
     private Squares[][] board;
@@ -16,7 +16,7 @@ public class ViewControl extends JFrame implements ActionListener {
 
     ViewControl (Boardgame gm, int n){
         this.n = n;
-        //this.game=gm;
+        this.game=gm;
         this.frame = new JFrame("Game");
         this.board = new Squares[n][n];
         this.panel = new JPanel(new GridLayout(n,n));
@@ -24,8 +24,13 @@ public class ViewControl extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e){
-        System.out.println(this);
+        Object btn = e.getSource();
+        if(btn instanceof Squares){
+            System.err.println(((Squares) btn).i + " " + ((Squares) btn).j);
+            this.game.move(((Squares) btn).i, ((Squares) btn).j);
+        }
     }
+
 
     private void add_buttons(){
         for(int i=0; i<this.n; i++){
@@ -52,7 +57,9 @@ public class ViewControl extends JFrame implements ActionListener {
     }
 
     public static void main(String[] arg){
-        ViewControl vc = new ViewControl(null, 4);
+        int size = 4;
+        FifteenModel gm = new FifteenModel(size);
+        ViewControl vc = new ViewControl(gm, size);
         vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vc.frame.setSize(new Dimension(500, 500));
         vc.frame.setVisible(true);
@@ -63,7 +70,9 @@ public class ViewControl extends JFrame implements ActionListener {
         vc.add_buttons();
 
         vc.frame.add(vc.panel);
-        //vc.rePaint();
-        vc.frame.validate();
+
+        while(true){
+            vc.rePaint();
+        }
     }
 }

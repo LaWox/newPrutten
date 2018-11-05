@@ -66,7 +66,7 @@ public class FifteenModel implements Boardgame {
             return String.valueOf(this.new_board.board_matrix[i][j].value);
         }
         else{
-            return null;
+            return " ";
         }
     }
 
