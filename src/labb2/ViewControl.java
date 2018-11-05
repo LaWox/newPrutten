@@ -13,7 +13,6 @@ public class ViewControl extends JFrame implements ActionListener{
     private JPanel panel;
     private int n;
     private JFrame frame;
-    private JLabel label;
 
     ViewControl (Boardgame gm, int n){
         this.n = n;
@@ -21,8 +20,6 @@ public class ViewControl extends JFrame implements ActionListener{
         this.frame = new JFrame("Game");
         this.board = new Squares[n][n];
         this.panel = new JPanel(new GridLayout(n,n));
-        //this.label=new JLabel("");
-        //this.label.setLayout(new GridLayout(1,1));
 
 
 
@@ -36,7 +33,7 @@ public class ViewControl extends JFrame implements ActionListener{
             this.game.move(((Squares) btn).i, ((Squares) btn).j);
             //this.label.setText(this.game.getMessage());
             JOptionPane.showMessageDialog(null, this.game.getMessage());
-            rePaint();
+            rePaint(); //kommentera bort denna när MockObject ska köras
 
 
         }
@@ -69,7 +66,9 @@ public class ViewControl extends JFrame implements ActionListener{
 
     public static void main(String[] arg){
         int size = 4;
+        //int size = 5;
         FifteenModel gm = new FifteenModel(size);
+        //MockObject gm = new MockObject(size);
         ViewControl vc = new ViewControl(gm, size);
         vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vc.frame.setSize(new Dimension(500, 500));
@@ -80,11 +79,7 @@ public class ViewControl extends JFrame implements ActionListener{
 
 
         vc.add_buttons();
-        //vc.panel.add(vc.label);
         vc.frame.add(vc.panel);
-
-
-
         vc.rePaint();
 
     }
