@@ -62,10 +62,14 @@ public class FifteenModel implements Boardgame {
     }
 
     public String getStatus(int i, int j) {
-        if(this.new_board.isOccupied(i, j)){
-            return String.valueOf(this.new_board.board_matrix[i][j].value);
+        try {
+            if (this.new_board.isOccupied(i, j)) {
+                return String.valueOf(this.new_board.board_matrix[i][j].value);
+            } else {
+                return " ";
+            }
         }
-        else{
+        catch (IndexOutOfBoundsException e){
             return " ";
         }
     }
