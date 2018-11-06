@@ -11,8 +11,11 @@ public class ViewControl extends JFrame implements ActionListener{
     private Squares[][] board;
     private JLabel mess = new JLabel();
     private JPanel panel;
+    private JPanel label_panel;
     private int n;
     private JFrame frame;
+    private JLabel label;
+    private JPanel main_panel;
 
     ViewControl (Boardgame gm, int n){
         this.n = n;
@@ -20,6 +23,9 @@ public class ViewControl extends JFrame implements ActionListener{
         this.frame = new JFrame("Game");
         this.board = new Squares[n][n];
         this.panel = new JPanel(new GridLayout(n,n));
+        this.label_panel= new JPanel();
+        this.label=new JLabel("VÄlkommen till fantastic game time");
+        this.main_panel= new JPanel(new FlowLayout());
 
 
 
@@ -32,7 +38,8 @@ public class ViewControl extends JFrame implements ActionListener{
             //System.err.println(((Squares) btn).i + " " + ((Squares) btn).j);
             this.game.move(((Squares) btn).i, ((Squares) btn).j);
             //this.label.setText(this.game.getMessage());
-            JOptionPane.showMessageDialog(null, this.game.getMessage());
+            this.label.setText("------------ "+this.game.getMessage()+" ----------");
+            //JOptionPane.showMessageDialog(null, this.game.getMessage());
             rePaint(); //kommentera bort denna när MockObject ska köras
 
 
@@ -77,9 +84,12 @@ public class ViewControl extends JFrame implements ActionListener{
         vc.panel.setVisible(true);
         vc.panel.setBackground(Color.BLUE);
 
-
+        vc.label_panel.add(vc.label);
         vc.add_buttons();
-        vc.frame.add(vc.panel);
+        vc.main_panel.add(vc.label_panel);
+        vc.main_panel.add(vc.panel);
+
+        vc.frame.add(vc.main_panel);
         vc.rePaint();
 
     }
