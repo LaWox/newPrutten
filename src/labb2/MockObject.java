@@ -14,9 +14,9 @@ public class MockObject implements Boardgame {
 
     public boolean move(int i, int j) {
         try {
-            this.board[i][j]
+            //this.board[i][j];
             this.getMessage();
-            System.out.println("The move was a succes!")
+            System.out.println("The move was a succes!");
             return true;
         }
         catch (IndexOutOfBoundsException e) {
@@ -38,7 +38,7 @@ public class MockObject implements Boardgame {
     }
 
     public String getMessage(){
-        System.out.println("Your move was processed");
+        return "Your move was processed";
 
     }
 }
