@@ -40,7 +40,7 @@ class GameBoard extends JPanel {
         for (int i = 0; i<3; i++){
             buttons[i] = new JButton();
             buttons[i].setIcon(icons[i]);
-            System.out.println(icons[i].getIconHeight());
+            //System.out.println(icons[i].getIconHeight());
             buttons[i].setActionCommand(texts[i]);
             this.add(buttons[i]);
             // Store each button in a map with its text as key.

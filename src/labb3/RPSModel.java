@@ -13,12 +13,15 @@ public class RPSModel {
     Socket sock;
     BufferedReader in;
     PrintWriter out;
+    String name;
 
-    public RPSModel(String host, int port){
+    public RPSModel(String host, int port, String name){
         this.hands = new String[]{"STEN", "SAX", "PASE"};
         this.sock = getSocket(host, port);
         this.in = getInStream(this.sock);
         this.out = getOutputStream(this.sock);
+        this.name=name;
+        startGame();
     }
 
 
@@ -102,19 +105,27 @@ public class RPSModel {
         return null;
     }
 
+    public void startGame(){
+    try {
+        this.out.println(this.name);
+        this.out.flush();
+        this.in.readLine(); }
+        catch(IOException e) {}
+    }
+
+    public String toString(){
+        return "Hej hej";
+    }
+
     public static void main(String[] args){
-        RPSModel model = new RPSModel("localhost", 4713);
+        RPSModel model = new RPSModel("localhost", 4713, "EttNamn");
         try{
             BufferedReader in = new BufferedReader(new InputStreamReader(model.sock.getInputStream()));
             PrintWriter ut = new PrintWriter(model.sock.getOutputStream());
 
-            String name = "EttNamn";
-            ut.println(name);
-            ut.flush();
-            System.out.println(in.readLine());
+
             Scanner inputHand = new Scanner(System.in);
             String compHand;
-
             while(true){
                 String hand = model.hands[inputHand.nextInt()];
                 ut.println(hand);
