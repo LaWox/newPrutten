@@ -28,3 +28,4 @@ Man klara sig med ett par if-satser (och några && och ||) eller helt utan if, o
 Tryck på den ska ge nedkoppling från servern och avsluta programmet. Finns redan förberedd i skelett-programmet.
 
 * Låt olika lyssnare ta hand om avsluta-knappen och spel-knapparna. De har ju helt olika uppgifter.
+
