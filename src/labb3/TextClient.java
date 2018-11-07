@@ -13,7 +13,7 @@ public class TextClient {
 
     public static void main(String[] arg) {
         try {
-            Socket socket = new Socket("share-02.csc.kth.se", 4713);
+            Socket socket = new Socket("localhost", 4713);
             BufferedReader in = new BufferedReader
                     (new InputStreamReader(socket.getInputStream()));
             PrintWriter ut = new PrintWriter(socket.getOutputStream());
