@@ -2,7 +2,7 @@
 *.class
 
 # XML-files
-idea/workspace.xml
+.idea/workspace.xml
 tasks.xml
 
 # Log file
