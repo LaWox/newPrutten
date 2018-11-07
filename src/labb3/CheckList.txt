@@ -1,0 +1,31 @@
+-------------CHECKLISTA----------
+
+Grafiska del:
+* Minst två klasser, varav den ena kan vara GameBoard.
+
+Model del:
+* Vi kan använda RPSSkel för att strukturera upp allt.
+
+Krav:
+* En spelplan för användare och för servern av samma klass
+* Knapptryckningar i våran spelplan ska ha effekt på spelet men datorns spelplan ska inte ha de
+* Två knapptryckningar innan programmet läser av vad den ska ta för input
+
+* När användaren och datorn spelar (alltså på var tredje knapptryckning) ska det markeras på spelplanerna hur man har valt,
+dels genom att knapparnas (din och datorns) färg ändras och dels genom att STEN, SAX eller PASE skrivs i
+textrutan närmast ovanför knapparna. Färgen ändras tillbaka vid nästa tryck "ETT ...".
+
+* I rutan närmast under knapparna på var spelplan skrivs texterna "ETT ...", "TVÅ ..." och på tre skrivs om
+spelaren vann eller förlorade eller om det blev oavgjort.
+
+* Poängställningen ska uppdateras längst ned på vinnande spelpan.
+
+* För varje spel måste programmet avgöra vem som vann. Se till att detta görs på ett snyggt och tydligt sätt!
+Det är inte nödvändigt att testa alla kombinationer av STEN/SAX/PÅSE.
+Man klara sig med ett par if-satser (och några && och ||) eller helt utan if, om man skapat en lämplig datastruktur.
+
+* Det ska finnas en "avsluta"-knapp.
+Tryck på den ska ge nedkoppling från servern och avsluta programmet. Finns redan förberedd i skelett-programmet.
+
+* Låt olika lyssnare ta hand om avsluta-knappen och spel-knapparna. De har ju helt olika uppgifter.
+
