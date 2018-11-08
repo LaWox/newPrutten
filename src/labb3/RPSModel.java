@@ -71,7 +71,7 @@ public class RPSModel {
         return null;
     }
 
-    public Socket getSocket(String host, int port){
+    private Socket getSocket(String host, int port){
         try {
             Socket sock = new Socket(host, port);
             return sock;
@@ -82,7 +82,7 @@ public class RPSModel {
         return null;
     }
 
-    public BufferedReader getInStream(Socket sock){
+    private BufferedReader getInStream(Socket sock){
         try{
             BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
             return in;
@@ -94,7 +94,7 @@ public class RPSModel {
         return null;
     }
 
-    public PrintWriter getOutputStream(Socket sock){
+    private PrintWriter getOutputStream(Socket sock){
         try{
             PrintWriter ut = new PrintWriter(sock.getOutputStream());
             return ut;
@@ -105,11 +105,11 @@ public class RPSModel {
         return null;
     }
 
-    public void startGame(){
-    try {
-        this.out.println(this.name);
-        this.out.flush();
-        this.in.readLine(); }
+    private void startGame(){
+        try {
+            this.out.println(this.name);
+            this.out.flush();
+            this.in.readLine(); }
         catch(IOException e) {}
     }
 
