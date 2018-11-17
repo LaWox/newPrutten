@@ -6,11 +6,11 @@ public class Leaf extends Component {
         super(weight, name);
     }
 
-    public void Add(Component C){
+    public void add(Component C){
 
     }
 
-    public void Remove(Component C){
+    public void remove(Component C){
 
     }
 
