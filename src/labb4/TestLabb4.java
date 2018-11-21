@@ -11,13 +11,13 @@ public class TestLabb4 {
         Composite plastpase = new Composite(0.01, "plastpåse");
 
         /* Till plastpåsen */
-        Leaf gras = new Leaf(0.5, "gräs");
-        Leaf mdma = new Leaf(0.1, "MDMA");
-        Leaf speed = new Leaf(0.25, "speed");
+        Leaf gras = new Leaf(0.5, "Medecin");
+        Leaf mdma = new Leaf(0.1, "MnM's");
+        Leaf speed = new Leaf(0.25, "koffeinPiller");
 
         /* Till Necessären */
         Leaf tandborste = new Leaf(0.1, "tandborste");
-        Leaf gummi = new Leaf(0.2, "kondomer");
+        Leaf gummi = new Leaf(0.2, "tandkräm");
 
         /*Rakt  i väskan*/
         Leaf byxor = new Leaf(0.3,  "jeans");
