@@ -15,9 +15,17 @@ public class XMLParser {
 
     Document doc;
 
+    XMLParser(String filepath){
+
+        this.doc = getDocument(filepath);
+    }
+
     XMLParser(){
+
         this.doc = getDocument("src/labb5/Liv.xml");
     }
+
+
 
     public static Document getDocument(String filePath){
         try{
@@ -31,5 +39,11 @@ public class XMLParser {
             System.err.println(e);
             return null;
         }
+    }
+
+    public static void main(String[] arg){
+        XMLParser run= new XMLParser();
+        System.out.println(run.doc.getRootElement().getName());
+
     }
 }

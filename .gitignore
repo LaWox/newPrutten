@@ -1,2 +1,10 @@
 .idea/workspace.xml
 .idea/workspace.xml
+*.jar
+jdom-2/lib/jaxen-1.1.6.LICENSE.txt
+jdom-2/lib/xalan/xalan-2.7.2.LICENSE
+jdom-2/lib/xalan/xalan-2.7.2.NOTICE
+jdom-2/lib/xerces.2.11.LICENSE
+jdom-2/lib/xerces.2.11.NOTICE
+jdom-2/LICENSE.txt
+jdom-2/README.txt
