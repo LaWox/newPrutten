@@ -15,6 +15,7 @@ public class Tower extends SchessPiece {
     }
 
     protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
+
         return true;
 
     }
