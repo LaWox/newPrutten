@@ -86,7 +86,6 @@ public class LifeTree extends TreeFrame {
         if(args.length > 0){
             directory = args[0];
         }
-        //System.err.println(directory);
         LifeTree lifeTree = new LifeTree();
     }
 }
