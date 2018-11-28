@@ -1,8 +1,6 @@
 package labb5;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 import org.jdom2.Document;
 import org.jdom2.input.SAXBuilder;
@@ -20,7 +18,7 @@ public class XMLParser {
         this.doc = getDocument("labb5/Liv.xml");
     }
 
-    public static Document getDocument(String filePath){
+    private static Document getDocument(String filePath){
         try{
             File inputFile = new File(filePath);
             SAXBuilder saxBuilder = new SAXBuilder();
