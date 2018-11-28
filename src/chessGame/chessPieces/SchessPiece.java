@@ -5,11 +5,12 @@ import javax.swing.*;
 public abstract class SchessPiece {
 
     private String color;
-    static String name;
-    static Icon image;
+    protected String NAME;
 
     SchessPiece(String color) {
         this.color = color;
+        this.NAME="";
+
 
 
 
@@ -22,7 +23,7 @@ public abstract class SchessPiece {
     }
 
     protected String getName(){
-        return name;
+        return this.NAME;
     }
 
     protected boolean isWhite(){
@@ -35,7 +36,7 @@ public abstract class SchessPiece {
     }
 
     public String toString() {
-    return name + " " + color;
+    return this.NAME + " " + color;
     }
 
 
