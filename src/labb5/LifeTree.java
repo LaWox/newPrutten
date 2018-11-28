@@ -6,11 +6,9 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class LifeTree extends TreeFrame {
 
@@ -24,13 +22,10 @@ public class LifeTree extends TreeFrame {
     }
 
     private static XMLParser createParser(){
-        System.err.println("inne: " + directory);
         if(directory == null){
-            System.err.println("ingen input");
             return new XMLParser();
         }
         else{
-            System.err.println("input given");
             return new XMLParser(directory);
         }
     }
@@ -39,7 +34,6 @@ public class LifeTree extends TreeFrame {
     public void initTree(){
         parser = createParser();
 
-        System.err.println(parser.toString());
         Element rootElement = parser.doc.getRootElement();
         root = new DefaultMutableTreeNode(rootElement.getAttributes().get(0).getValue());
 
@@ -89,7 +83,6 @@ public class LifeTree extends TreeFrame {
     }
 
     public static void main(String[] args){
-        System.err.println(args[0]);
         if(args.length > 0){
             directory = args[0];
         }

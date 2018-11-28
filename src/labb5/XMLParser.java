@@ -20,8 +20,6 @@ public class XMLParser {
         this.doc = getDocument("labb5/Liv.xml");
     }
 
-
-
     public static Document getDocument(String filePath){
         try{
             File inputFile = new File(filePath);
@@ -31,7 +29,7 @@ public class XMLParser {
 
         }
         catch (Exception e){
-            System.err.println(e);
+            System.err.println("Hittar ej filen");
             return null;
         }
     }
