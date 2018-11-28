@@ -10,10 +10,6 @@ public abstract class SchessPiece {
     SchessPiece(String color) {
         this.color = color;
         this.NAME="";
-
-
-
-
     }
 
     abstract protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext);
