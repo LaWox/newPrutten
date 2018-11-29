@@ -6,7 +6,7 @@ public class King extends SchessPiece{
 
     static Icon image =new ImageIcon("hej");
 
-    King(String color){
+    public King(String color){
         super(color);
         this.NAME="Kung";
 
