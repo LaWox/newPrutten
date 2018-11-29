@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Horse extends SchessPiece {
 
-    Horse(String color){
+    public Horse(String color){
         super(color);
         this.NAME = "Häst";
     }

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Farmer extends SchessPiece {
 
-    Farmer(String color){
+    public Farmer(String color){
         super(color);
         this.NAME = "Bonde";
     }

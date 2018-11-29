@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Runner extends SchessPiece {
 
-    Runner(String color){
+    public Runner(String color){
         super(color);
         this.NAME = "Löpare";
 
