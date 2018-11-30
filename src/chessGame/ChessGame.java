@@ -36,12 +36,17 @@ public class ChessGame implements Boardgame{
 
     public static void main(String[] args){
         ChessGame game = new ChessGame();
+        game.board.setUp();
         Scanner input = new Scanner(System.in);
         while(true){
             game.board.printBoard();
-            int startX = input.nextInt();
-            int startY = input.nextInt();
-
+            game.startPos[0] = input.nextInt();
+            game.startPos[1] = input.nextInt();
+            System.err.println(game.board.matrix[game.startPos[0]][game.startPos[1]]);
+            game.chosenPiece = game.board.matrix[game.startPos[0]][game.startPos[1]];
+            int endX = input.nextInt();
+            int endY = input.nextInt();
+            System.err.println(game.move(endX,endY));
         }
 
     }
