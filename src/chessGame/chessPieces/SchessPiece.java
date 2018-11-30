@@ -6,10 +6,12 @@ public abstract class SchessPiece {
 
     private String color;
     protected String NAME;
+    Icon img;
 
     SchessPiece(String color) {
         this.color = color;
         this.NAME="";
+        this.setImg();
     }
 
     abstract protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext);
@@ -35,6 +37,9 @@ public abstract class SchessPiece {
     return this.NAME + " " + color;
     }
 
+    private void setImg(){
+        this.img = new ImageIcon("path" + this.NAME + "-" +  this.color + ".fileType");
+    }
 
 
 }
