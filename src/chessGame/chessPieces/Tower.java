@@ -5,8 +5,6 @@ import javax.swing.*;
 public class Tower extends SchessPiece {
 
 
-    static Icon image =new ImageIcon("hej");
-
     Tower(String color){
         super(color);
         this.NAME="Torn";

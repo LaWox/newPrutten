@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class Queen extends SchessPiece {
 
-    static Icon image =new ImageIcon("hej");
 
     Queen(String color){
         super(color);
