@@ -12,7 +12,7 @@ public class Queen extends SchessPiece {
 
     }
 
-    protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
+    public boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
         if (xcurr==xnext && ycurr!=ynext){
             return true;
         }
@@ -22,7 +22,7 @@ public class Queen extends SchessPiece {
         else{
             return ((Math.abs(ycurr-ynext) / Math.abs(xcurr-xnext))==1);
         }
-        
+
     }
 
 
