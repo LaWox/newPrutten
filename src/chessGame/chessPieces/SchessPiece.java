@@ -14,17 +14,17 @@ public abstract class SchessPiece {
         this.setImg();
     }
 
-    abstract protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext);
+    abstract public boolean checkMove(int xcurr, int ycurr, int xnext, int ynext);
 
-    protected String getColor(){
+    public String getColor(){
         return this.color;
     }
 
-    protected String getName(){
+    public String getName(){
         return this.NAME;
     }
 
-    protected boolean isWhite(){
+    public boolean isWhite(){
         if (color.equals("white")){
             return true;
         }
@@ -38,7 +38,8 @@ public abstract class SchessPiece {
     }
 
     private void setImg(){
-        this.img = new ImageIcon("path" + this.NAME + "-" +  this.color + ".fileType");
+        //chessGame/chessPieces/chessIcons/Bonde-black.png
+        this.img = new ImageIcon("chessGame/chessPieces/chessIcons" + this.NAME + "-" +  this.color + ".png");
     }
 
 
