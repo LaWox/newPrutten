@@ -5,13 +5,9 @@ import javax.swing.*;
 public class Tower extends SchessPiece {
 
 
-    static Icon image =new ImageIcon("hej");
-
     public Tower(String color){
         super(color);
         this.NAME="Torn";
-
-
     }
 
     protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
