@@ -11,9 +11,10 @@ public class Tower extends SchessPiece {
     }
 
     protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
-
-        return true;
-
+        if (xcurr==xnext && ycurr!=ynext){
+            return true;
+        }
+        return (ycurr==ynext && xcurr!=xnext);
     }
 
     public static void main(String[] arg){

@@ -13,8 +13,16 @@ public class Queen extends SchessPiece {
     }
 
     protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
-        return true;
-
+        if (xcurr==xnext && ycurr!=ynext){
+            return true;
+        }
+        else if (ycurr==ynext && xcurr!=xnext){
+            return true;
+        }
+        else{
+            return ((Math.abs(ycurr-ynext) / Math.abs(xcurr-xnext))==1);
+        }
+        
     }
 
 

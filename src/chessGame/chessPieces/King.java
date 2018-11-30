@@ -13,7 +13,13 @@ public class King extends SchessPiece{
 
 
     protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
-        return true;
-
+        if(xcurr==xnext && Math.abs((ycurr-ynext)) == 1)
+            return true;
+        else if (ycurr==ynext && Math.abs((xcurr-xnext)) == 1){
+            return true;
+        }
+        else {
+            return (Math.abs(ycurr-ynext)==1 && Math.abs(xcurr-xnext)==1);
+        }
     }
 }
