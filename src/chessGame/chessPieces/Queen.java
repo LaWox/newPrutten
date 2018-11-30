@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Queen extends SchessPiece {
 
 
-    Queen(String color){
+    public Queen(String color){
         super(color);
         this.NAME="Drottning";
 

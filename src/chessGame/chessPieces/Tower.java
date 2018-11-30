@@ -5,11 +5,9 @@ import javax.swing.*;
 public class Tower extends SchessPiece {
 
 
-    Tower(String color){
+    public Tower(String color){
         super(color);
         this.NAME="Torn";
-
-
     }
 
     protected boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
