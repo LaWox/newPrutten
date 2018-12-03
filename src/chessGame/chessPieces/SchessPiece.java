@@ -10,8 +10,7 @@ public abstract class SchessPiece {
 
     SchessPiece(String color) {
         this.color = color;
-        this.NAME="";
-        this.setImg();
+        this.NAME = null;
     }
 
     abstract public boolean checkMove(int xcurr, int ycurr, int xnext, int ynext);
@@ -37,9 +36,15 @@ public abstract class SchessPiece {
     return this.NAME + " " + color;
     }
 
-    private void setImg(){
+    public Icon getImg(){
+        return this.img;
+    }
+
+    public void setImg(){
         //chessGame/chessPieces/chessIcons/Bonde-black.png
-        this.img = new ImageIcon("chessGame/chessPieces/chessIcons" + this.NAME + "-" +  this.color + ".png");
+        //C:\Users\Dell\Desktop\KTH\PruttenProjekt\src\chessGame\chessPieces\chessIcons\Bonde-black.png
+        //System.err.println("chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
+        this.img = new ImageIcon("C:/Users/Dell/Desktop/KTH/PruttenProjekt/src/chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
     }
 
 

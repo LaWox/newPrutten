@@ -7,6 +7,7 @@ public class Horse extends SchessPiece {
     public Horse(String color){
         super(color);
         this.NAME = "Häst";
+        this.setImg();
     }
 
     public boolean checkMove(int startX, int startY, int endX, int endY ){

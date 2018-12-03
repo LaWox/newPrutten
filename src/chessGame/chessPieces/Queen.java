@@ -4,12 +4,10 @@ import javax.swing.*;
 
 public class Queen extends SchessPiece {
 
-
     public Queen(String color){
         super(color);
         this.NAME="Drottning";
-
-
+        this.setImg();
     }
 
     public boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){

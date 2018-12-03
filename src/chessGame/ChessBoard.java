@@ -10,6 +10,10 @@ public class ChessBoard {
         this.matrix = new SchessPiece[size][size];
     }
 
+    public int getSize(){
+        return size;
+    }
+
     public void setUp(){
         for(int row = 0; row < 2; row ++){
             for(int col = 0; col < 8; col ++){
@@ -45,7 +49,7 @@ public class ChessBoard {
     }
 
     public boolean isOccupied(int x, int y){
-        return (this.matrix[x][y] == null);
+        return (!(this.matrix[x][y] == null));
     }
 
     public void printBoard(){

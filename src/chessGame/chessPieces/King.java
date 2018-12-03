@@ -8,7 +8,7 @@ public class King extends SchessPiece{
     public King(String color){
         super(color);
         this.NAME="Kung";
-
+        this.setImg();
     }
 
 

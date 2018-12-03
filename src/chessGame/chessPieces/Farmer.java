@@ -7,6 +7,8 @@ public class Farmer extends SchessPiece {
     public Farmer(String color){
         super(color);
         this.NAME = "Bonde";
+        this.setImg();
+
     }
 
     public boolean checkMove(int startx, int startY, int endX, int endY){

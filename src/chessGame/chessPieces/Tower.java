@@ -8,6 +8,7 @@ public class Tower extends SchessPiece {
     public Tower(String color){
         super(color);
         this.NAME="Torn";
+        this.setImg();
     }
 
     public boolean checkMove(int xcurr, int ycurr, int xnext, int ynext){
