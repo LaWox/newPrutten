@@ -33,6 +33,10 @@ public class Btn extends JButton implements ActionListener{
         System.err.println(this);
     }
 
+    public void setSelected(boolean selected){
+        this.selected = selected;
+    }
+
     public String toString(){
         return this.x + " : " + this.y;
     }

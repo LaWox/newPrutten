@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import chessGame.chessPieces.*;
 public class ViewControl extends JFrame implements ActionListener {
 
-    private Boardgame game;
+    private ChessGame game;
     private Btn[][] board;
     private JLabel mess = new JLabel();
     private JPanel panel;
@@ -25,38 +25,74 @@ public class ViewControl extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e){
-        System.out.println(this);
+        Btn clickedBtn = (Btn) e.getSource();
+        int x = clickedBtn.getX();
+        int y = clickedBtn.getY();
+
+        System.err.println("counter: " +  game.counter);
+        if(game.counter == 0){
+            if(this.game.startOk(x , y)){
+                game.setStartPos(x, y);
+                clickedBtn.setBackground(Color.green);
+                clickedBtn.setSelected(true);
+                game.chosenPiece = game.getStatus(x, y);
+                game.counter ++;
+
+            }
+            else{
+                System.err.println("dåligt val");
+            }
+        }
+        else{
+            if(clickedBtn.isSelected()){
+                clickedBtn.setSelected(false);
+                clickedBtn.setBackground(Color.white);
+                game.chosenPiece = null;
+                game.counter --;
+
+            }
+            else{
+                if(game.moveOk(x, y)){
+                    game.makeMove(x, y);
+                    clickedBtn.setIcon(null);
+                    game.counter --;
+                }
+                else{
+                    System.err.println("no move made");
+                }
+            }
+            System.err.println(game.moveSucess);
+        }
+        this.rePaint();
     }
 
     private void add_buttons(){
         for(int i=0; i<this.n; i++){
             for(int j=0; j<this.n; j++){
                 this.board[i][j] = new Btn(i, j);
+                this.board[i][j].addActionListener(this);
+                this.board[i][j].setBackground(Color.white);
                 this.panel.add(this.board[i][j]);
             }
         }
-
     }
 
     private void populateBoard(){
         for(int i=0; i<this.n; i++){
             for(int j=0; j<this.n; j++){
-                try{
+
                     if(this.game.getStatus(i, j) instanceof SchessPiece){
-                        this.board[i][j].setIcon(((SchessPiece) this.game.getStatus(i, j)).getImg());
-                        System.err.println(this.game.getStatus(i,j).toString());
+                        this.board[i][j].setIcon(this.game.getStatus(i, j).getImg());
                         this.panel.add(this.board[i][j]);
                     }
-
+                    else{
+                        this.board[i][j].setText("");
+                        this.panel.add(this.board[i][j]);
+                    }
                 }
-                catch (NullPointerException e){
-                    this.board[i][j].setText(" hej ");
-                    this.panel.add(this.board[i][j]);
-                }
-
             }
-        }
     }
+
 
     private void rePaint(){
         this.populateBoard();
@@ -69,8 +105,8 @@ public class ViewControl extends JFrame implements ActionListener {
         ViewControl vc = new ViewControl(game, size);
         vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vc.frame.setSize(new Dimension(800, 800));
-        vc.frame.setVisible(true);
 
+        vc.frame.setVisible(true);
         vc.panel.setVisible(true);
 
         vc.add_buttons();

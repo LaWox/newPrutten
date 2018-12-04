@@ -9,6 +9,7 @@ public class ChessGame extends Boardgame{
     int[] startPos;
     boolean moveSucess;
     boolean whitesTurn;
+    int counter;
 
     ChessGame(){
         this.board = new ChessBoard();
@@ -16,6 +17,7 @@ public class ChessGame extends Boardgame{
         this.startPos = new int[2];
         this.moveSucess = false;
         this.whitesTurn = true;
+        this.counter = 0;
     }
 
     public void setStartPos(int x,  int y){  //sätter den valda startPositionen
@@ -25,7 +27,6 @@ public class ChessGame extends Boardgame{
 
 
     public boolean startOk(int x, int y){  // ser till att startRutan har en pjäs på sig och att den pjäsen har rätt färg
-
         return this.whitesTurn && (this.board.isOccupied(x,y) && this.board.matrix[x][y].isWhite());
     }
 
@@ -54,6 +55,7 @@ public class ChessGame extends Boardgame{
             else{
                 this.moveSucess = false;
             }
+            this.whitesTurn = !this.whitesTurn;
         }
         catch (IndexOutOfBoundsException e){
             this.moveSucess = false;
