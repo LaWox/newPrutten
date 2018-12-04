@@ -80,14 +80,11 @@ public class ViewControl extends JFrame implements ActionListener {
     private void populateBoard(){
         for(int i=0; i<this.n; i++){
             for(int j=0; j<this.n; j++){
-
-                    if(this.game.getStatus(i, j) instanceof SchessPiece){
+                    if(this.game.getStatus(i, j) != null){
                         this.board[i][j].setIcon(this.game.getStatus(i, j).getImg());
-                        this.panel.add(this.board[i][j]);
                     }
                     else{
                         this.board[i][j].setText("");
-                        this.panel.add(this.board[i][j]);
                     }
                 }
             }
@@ -96,7 +93,7 @@ public class ViewControl extends JFrame implements ActionListener {
 
     private void rePaint(){
         this.populateBoard();
-        //this.frame.validate();
+        this.frame.validate();
     }
 
     public static void main(String[] arg){
@@ -113,7 +110,5 @@ public class ViewControl extends JFrame implements ActionListener {
 
         vc.frame.add(vc.panel);
         vc.populateBoard();
-
-        vc.frame.validate();
     }
 }
