@@ -13,7 +13,7 @@ public class NumberedItem<T> implements Comparable<NumberedItem>{
     }
 
     public String toString(){
-        return this.type + ": " + this.i;
+        return this.type + " : " + this.i;
     }
 
     public int compareTo(NumberedItem other){

@@ -46,10 +46,6 @@ public class OurSparseVector2B<E> extends TreeMap<Integer, E> implements SparseV
         this.removeAt(this.indexOf(elem));
     }
 
-    public int size() {
-        return this.size();
-    }
-
     public int minIndex() {
         try
         {
@@ -70,8 +66,8 @@ public class OurSparseVector2B<E> extends TreeMap<Integer, E> implements SparseV
         }
     }
 
-    public E get(int pos) {
-        return this.get(pos);
+    public E get(int pos){
+        return this.get((Integer)pos);
     }
 
     public String toString() {

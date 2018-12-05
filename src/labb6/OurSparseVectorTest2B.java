@@ -7,10 +7,6 @@ import static org.junit.Assert.assertNull;
 
 public class OurSparseVectorTest2B {
 
-
-
-
-
     @Test
     public void testEmpty(){
         OurSparseVector2B<String> a1=new OurSparseVector2B<String>();
@@ -49,13 +45,12 @@ public class OurSparseVectorTest2B {
         a1.removeElem("nej");
         assertEquals("nej", a1.get(2));
         assertEquals(1, a1.size());
-
     }
 
     @Test
     public void testToString(){
         OurSparseVector2B<String> a1 = new OurSparseVector2B<String>();
-        a1.add(0, "hej");
+        a1.add(7, "hej");
         a1.add(1, "nej");
         System.out.println(a1.toString());
 
@@ -64,8 +59,11 @@ public class OurSparseVectorTest2B {
     public static void main(String[] args){
         OurSparseVectorTest2B test = new OurSparseVectorTest2B();
         test.testEmpty();
+        //System.err.println("empty");
         test.testIndex();
+        //System.err.println("Index");
         test.testRemove();
+        //System.err.println("Remove");
         test.testToString();
         System.out.println("-------End of test-------");
     }
