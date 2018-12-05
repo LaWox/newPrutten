@@ -3,19 +3,18 @@ package labb6;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
-public class OurSparseVector<E> implements SparseVector<E> {
+public class OurSparseVector2B<E> extends TreeMap<Integer, E> implements SparseVector<E> {
 
-    TreeMap<Integer, E> map;
 
-    OurSparseVector(){
-        this.map = new TreeMap<>();
+    OurSparseVector2B(){
+        super();
     }
 
     public void add(E element){
         int counter = 0;
         while(true){
-            if(!map.containsKey(counter)){
-                map.put(counter, element);
+            if(!this.containsKey(counter)){
+                this.put(counter, element);
                 return;
             }
             counter ++;
@@ -26,13 +25,13 @@ public class OurSparseVector<E> implements SparseVector<E> {
         if(i < 0){
             i = 0;
         }
-        this.map.put(i,  element);
+        this.put(i,  element);
     }
 
     //funkar om keys är i ordning!
     public int indexOf(E elem) {
-        for(int i: this.map.keySet()){
-            if(this.map.get(i).equals(elem)){
+        for(int i: this.keySet()){
+            if(this.get(i).equals(elem)){
                 return i;
             }
         }
@@ -40,7 +39,7 @@ public class OurSparseVector<E> implements SparseVector<E> {
     }
 
     public void removeAt(int pos) {
-        this.map.remove(pos);
+        this.remove(pos);
     }
 
     public void removeElem(E elem) {
@@ -48,13 +47,13 @@ public class OurSparseVector<E> implements SparseVector<E> {
     }
 
     public int size() {
-        return this.map.size();
+        return this.size();
     }
 
     public int minIndex() {
         try
         {
-        return this.map.firstKey();
+        return this.firstKey();
         }
         catch (NoSuchElementException e){
             return -1;
@@ -64,7 +63,7 @@ public class OurSparseVector<E> implements SparseVector<E> {
     public int maxIndex() {
 
         try {
-            return this.map.lastKey();
+            return this.lastKey();
         }
         catch(NoSuchElementException e){
             return -1;
@@ -72,13 +71,13 @@ public class OurSparseVector<E> implements SparseVector<E> {
     }
 
     public E get(int pos) {
-        return this.map.get(pos);
+        return this.get(pos);
     }
 
     public String toString() {
         StringBuilder string = new StringBuilder();
-        for(int i: this.map.keySet()){
-            string.append(i +" : "+ this.map.get(i).toString() + "\n");
+        for(int i: this.keySet()){
+            string.append(i +" : "+ this.get(i).toString() + "\n");
         }
         return string.toString();
     }
