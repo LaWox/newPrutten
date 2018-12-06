@@ -31,9 +31,7 @@ public class ChessGame extends Boardgame{
     }
 
     public boolean moveOk(int endX, int endY){
-        if(this.board.isOccupied(endX, endY)){
-        }
-        if(this.board.isOccupied(endX, endY) && this.chosenPiece.getName().equals("Bonde")){
+        if(this.board.isOccupied(endX, endY) && this.chosenPiece instanceof Farmer){
                 Farmer farmer  = (Farmer) this.chosenPiece;
                 return farmer.checkMove(this.startPos[0], this.startPos[1], endX, endY, true);
             }

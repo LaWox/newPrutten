@@ -8,7 +8,7 @@ import chessGame.chessPieces.*;
 public class ViewControl extends JFrame implements ActionListener {
 
     private ChessGame game;
-    private Btn[][] board;
+    private JButton[][] board;
     private JLabel mess = new JLabel();
     private JPanel panel;
     private int n;
@@ -19,7 +19,7 @@ public class ViewControl extends JFrame implements ActionListener {
         this.game=gm;
         this.n = size;
         this.frame = new JFrame("Game");
-        this.board = new Btn[size][size];
+        this.board =  new JButton[size][size];
         this.panel = new JPanel(new GridLayout(size,size));
 
     }
@@ -63,7 +63,7 @@ public class ViewControl extends JFrame implements ActionListener {
             }
             System.err.println(game.moveSucess);
         }
-        this.rePaint();
+        //this.rePaint();
     }
 
     private void add_buttons(){
@@ -93,6 +93,7 @@ public class ViewControl extends JFrame implements ActionListener {
 
     private void rePaint(){
         this.populateBoard();
+        this.frame.repaint();
         this.frame.validate();
     }
 
@@ -101,14 +102,14 @@ public class ViewControl extends JFrame implements ActionListener {
         int size = game.board.getSize();
         ViewControl vc = new ViewControl(game, size);
         vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vc.frame.setSize(new Dimension(800, 800));
+        vc.frame.setSize(new Dimension(700, 700));
 
         vc.frame.setVisible(true);
         vc.panel.setVisible(true);
 
         vc.add_buttons();
-
         vc.frame.add(vc.panel);
         vc.populateBoard();
+        vc.rePaint();
     }
 }

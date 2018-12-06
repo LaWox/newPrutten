@@ -14,7 +14,7 @@ public class Btn extends JButton implements ActionListener{
         this.x = row;
         this.y = col;
         this.selected = false;
-        this.addActionListener(this);
+        //this.addActionListener(this);
     }
 
     public int getX(){
