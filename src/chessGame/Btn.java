@@ -9,12 +9,21 @@ public class Btn extends JButton implements ActionListener{
     int x;
     int y;
     boolean selected;
+    Color color;
 
     public Btn(int row, int col){
         this.x = row;
         this.y = col;
         this.selected = false;
         //this.addActionListener(this);
+    }
+
+    public Color getColor(){
+        return this.color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public int getX(){

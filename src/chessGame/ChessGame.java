@@ -27,16 +27,24 @@ public class ChessGame extends Boardgame{
 
 
     public boolean startOk(int x, int y){  // ser till att startRutan har en pjäs på sig och att den pjäsen har rätt färg
-        return this.whitesTurn && (this.board.isOccupied(x,y) && this.board.matrix[x][y].isWhite());
+        return (this.board.isOccupied(x,y)) && (this.whitesTurn == this.board.matrix[x][y].isWhite());
     }
 
     public boolean moveOk(int endX, int endY){
+        // Kan inte flytta till plats där pjäs av samma färg står
+        if(this.board.isOccupied(endX, endY) && this.getStatus(endX, endY).isWhite() == this.whitesTurn){
+            return false;
+        }
+
+        // specialFall för Bonde
         if(this.board.isOccupied(endX, endY) && this.chosenPiece instanceof Farmer){
                 Farmer farmer  = (Farmer) this.chosenPiece;
-                return farmer.checkMove(this.startPos[0], this.startPos[1], endX, endY, true);
+                return farmer.checkMove(this.startPos[1], this.startPos[0], endY, endX, true);
             }
+
+        // Kallar på checkMove för varje pjäs
         else{
-            return this.chosenPiece.checkMove(startPos[0], startPos[1], endX, endY);
+            return this.chosenPiece.checkMove(startPos[1], startPos[0], endY, endX);
         }
     }
 
@@ -61,6 +69,9 @@ public class ChessGame extends Boardgame{
 
     }
 
+    public boolean pathClear(){
+        return false;
+    }
 
     public String getMessage(){
         if(moveSucess){

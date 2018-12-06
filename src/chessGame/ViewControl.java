@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import chessGame.chessPieces.*;
+
 public class ViewControl extends JFrame implements ActionListener {
 
     private ChessGame game;
@@ -19,9 +19,9 @@ public class ViewControl extends JFrame implements ActionListener {
         this.game=gm;
         this.n = size;
         this.frame = new JFrame("Game");
+        this.panel = new JPanel();
+        this.panel.setLayout(new GridLayout(size,size));
         this.board =  new JButton[size][size];
-        this.panel = new JPanel(new GridLayout(size,size));
-
     }
 
     public void actionPerformed(ActionEvent e){
@@ -30,6 +30,7 @@ public class ViewControl extends JFrame implements ActionListener {
         int y = clickedBtn.getY();
 
         System.err.println("counter: " +  game.counter);
+
         if(game.counter == 0){
             if(this.game.startOk(x , y)){
                 game.setStartPos(x, y);
@@ -47,15 +48,18 @@ public class ViewControl extends JFrame implements ActionListener {
             if(clickedBtn.isSelected()){
                 clickedBtn.setSelected(false);
                 clickedBtn.setBackground(Color.white);
-                game.chosenPiece = null;
-                game.counter --;
-
+                this.game.chosenPiece = null;
+                this.game.counter --;
             }
             else{
-                if(game.moveOk(x, y)){
-                    game.makeMove(x, y);
-                    clickedBtn.setIcon(null);
-                    game.counter --;
+                if(this.game.moveOk(x, y)){
+                    this.game.makeMove(x, y);
+                    clickedBtn.setIcon(this.game.chosenPiece.getImg());
+
+                    this.game.board.matrix[game.startPos[0]][game.startPos[1]] = null;
+                    this.board[this.game.startPos[0]][this.game.startPos[1]].setBackground(Color.white);
+
+                    this.game.counter --;
                 }
                 else{
                     System.err.println("no move made");
@@ -63,7 +67,8 @@ public class ViewControl extends JFrame implements ActionListener {
             }
             System.err.println(game.moveSucess);
         }
-        //this.rePaint();
+        System.err.println("white's turn: " + this.game.whitesTurn);
+        this.rePaintFrame();
     }
 
     private void add_buttons(){
@@ -84,32 +89,38 @@ public class ViewControl extends JFrame implements ActionListener {
                         this.board[i][j].setIcon(this.game.getStatus(i, j).getImg());
                     }
                     else{
+                        this.board[i][j].setIcon(null);
                         this.board[i][j].setText("");
                     }
                 }
             }
     }
 
-
-    private void rePaint(){
+    private void rePaintFrame(){
         this.populateBoard();
-        this.frame.repaint();
-        this.frame.validate();
     }
 
     public static void main(String[] arg){
         ChessGame game = new ChessGame();
         int size = game.board.getSize();
+
         ViewControl vc = new ViewControl(game, size);
+
         vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vc.frame.setSize(new Dimension(700, 700));
 
-        vc.frame.setVisible(true);
-        vc.panel.setVisible(true);
-
         vc.add_buttons();
+
         vc.frame.add(vc.panel);
-        vc.populateBoard();
-        vc.rePaint();
+
+        vc.panel.setVisible(true);
+        vc.frame.setVisible(true);
+
+        vc.panel.setOpaque(true);
+        vc.panel.validate();
+        vc.panel.repaint();
+        vc.panel.revalidate();
+        vc.rePaintFrame();
+        vc.frame.validate();
     }
 }

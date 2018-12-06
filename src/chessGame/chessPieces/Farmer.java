@@ -11,20 +11,21 @@ public class Farmer extends SchessPiece {
 
     }
 
-    public boolean checkMove(int startx, int startY, int endX, int endY){
+    public boolean checkMove(int startX, int startY, int endX, int endY){
+        System.err.println(startX + " : " + startY + " : "  + endX + " : " +  endY + " : ");
         if(startY == 1 || startY == 6){
             if(this.isWhite()){
-                return (startY-endY == 2 && startx == endX);
+                return ((startY-endY == 2 || startY-endY == 1)  && startX == endX);
             }
             else{
-                return (startY-endY == -2 && startx == endX);
+                return ((startY-endY == -2 || startY-endY == -1) && startX == endX);
             }
         }
         if(this.isWhite()){
-            return (startY-endY == 1 && startx == endX);
+            return (startY-endY == 1 && startX == endX);
         }
         else{
-            return (startY-endY == -1 && startx == endX);
+            return (startY-endY == -1 && startX == endX);
         }
     }
 

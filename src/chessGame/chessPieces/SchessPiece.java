@@ -24,12 +24,7 @@ public abstract class SchessPiece {
     }
 
     public boolean isWhite(){
-        if (color.equals("white")){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.color.equals("white");
     }
 
     public String toString() {
