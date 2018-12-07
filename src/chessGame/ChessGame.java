@@ -1,6 +1,8 @@
 package chessGame;
 
 import chessGame.chessPieces.*;
+
+import java.awt.*;
 import java.util.Scanner;
 
 public class ChessGame extends Boardgame{
@@ -8,7 +10,7 @@ public class ChessGame extends Boardgame{
     SchessPiece chosenPiece;
     int[] startPos;
     boolean moveSucess;
-    boolean whitesTurn;
+    private boolean whitesTurn;
     int counter;
 
     ChessGame(){
@@ -18,6 +20,7 @@ public class ChessGame extends Boardgame{
         this.moveSucess = false;
         this.whitesTurn = true;
         this.counter = 0;
+        this.chosenPiece = null;
     }
 
     public void setStartPos(int x,  int y){  //sätter den valda startPositionen
@@ -25,12 +28,16 @@ public class ChessGame extends Boardgame{
         this.startPos[1] = y;
     }
 
-
     public boolean startOk(int x, int y){  // ser till att startRutan har en pjäs på sig och att den pjäsen har rätt färg
         return (this.board.isOccupied(x,y)) && (this.whitesTurn == this.board.matrix[x][y].isWhite());
     }
 
     public boolean moveOk(int endX, int endY){
+        // kollar ifall något är ivägen
+        if(!this.pathClear(this.startPos[0], this.startPos[1], endX, endY)){
+            return false;
+        }
+
         // Kan inte flytta till plats där pjäs av samma färg står
         if(this.board.isOccupied(endX, endY) && this.getStatus(endX, endY).isWhite() == this.whitesTurn){
             return false;
@@ -48,7 +55,7 @@ public class ChessGame extends Boardgame{
         }
     }
 
-    public void makeMove(int x, int y){     //utför drag ifall drag giltigt, assignar moveSuccess därefter
+    public boolean makeMove(int x, int y){     //utför drag ifall drag giltigt, assignar moveSuccess därefter
         try{
             if(moveOk(x, y)){
                 int startX = this.startPos[0];
@@ -56,21 +63,45 @@ public class ChessGame extends Boardgame{
                 this.board.matrix[x][y] = this.board.matrix[startX][startY];
                 this.board.matrix[startX][startY] = null;
                 this.moveSucess  = true;
-
+                this.whitesTurn = !this.whitesTurn;
+                return true;
             }
             else{
                 this.moveSucess = false;
+                return false;
             }
-            this.whitesTurn = !this.whitesTurn;
         }
         catch (IndexOutOfBoundsException e){
             this.moveSucess = false;
+            return false;
         }
 
     }
 
-    public boolean pathClear(){
-        return false;
+    private boolean pathClear(int startX, int startY, int endX, int endY){
+        if(this.chosenPiece instanceof Horse){
+            return true;
+        }
+        int dX = endX - startX;
+        int dY = endY - startY;
+
+        System.err.println("dx: " + dX+  "dy: " + dY);
+        int magnitude = (Math.abs(dX) <= Math.abs(dY)) ? Math.abs(dY): Math.abs(dX);
+
+        System.err.println("mag" + magnitude);
+        int xDir = (dX == 0) ? 0: dX/Math.abs(dX);
+        int yDir = (dY == 0) ? 0: dY/Math.abs(dY);
+
+        System.err.println("xdir: " + xDir + " yDir: " + yDir);
+
+        for(int i = 1; i < magnitude; i++){
+            System.err.println(startX+(xDir*i) + " : " + startY+(yDir*i));
+            if(this.board.isOccupied(startX+(xDir*i), startY+(yDir*i))){
+                System.err.println("pathObstruction");
+                return false;
+            }
+        }
+        return true;
     }
 
     public String getMessage(){
@@ -81,7 +112,6 @@ public class ChessGame extends Boardgame{
             return "move invalid";
         }
     }
-
 
     public SchessPiece getStatus(int x, int y){
         if(this.board.isOccupied(x,y)){
@@ -112,5 +142,17 @@ public class ChessGame extends Boardgame{
             System.err.println(game.getMessage());
         }
 
+    }
+
+    public Color colorPicker(int x, int y){
+        if(x % 2 == 0 && y % 2 == 0){
+            return Color.lightGray;
+        }
+        else if(x % 2 != 0 && y % 2 != 0){
+            return Color.lightGray;
+        }
+        else{
+            return Color.white;
+        }
     }
 }

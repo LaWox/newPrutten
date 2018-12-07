@@ -1,7 +1,5 @@
 package chessGame.chessPieces;
 
-import javax.swing.*;
-
 public class Queen extends SchessPiece {
 
     public Queen(String color){
@@ -18,7 +16,13 @@ public class Queen extends SchessPiece {
             return true;
         }
         else{
-            return ((Math.abs(ycurr-ynext) / Math.abs(xcurr-xnext))==1);
+            try{
+                return ((Math.abs(ycurr-ynext) / Math.abs(xcurr-xnext))==1);
+            }
+            catch (ArithmeticException e ){
+                return false;
+            }
+
         }
 
     }

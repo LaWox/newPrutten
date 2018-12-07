@@ -28,8 +28,8 @@ public class ViewControl extends JFrame implements ActionListener {
         Btn clickedBtn = (Btn) e.getSource();
         int x = clickedBtn.getX();
         int y = clickedBtn.getY();
-
-        System.err.println("counter: " +  game.counter);
+        int startX = this.game.startPos[0];
+        int startY = this.game.startPos[1];
 
         if(game.counter == 0){
             if(this.game.startOk(x , y)){
@@ -38,7 +38,6 @@ public class ViewControl extends JFrame implements ActionListener {
                 clickedBtn.setSelected(true);
                 game.chosenPiece = game.getStatus(x, y);
                 game.counter ++;
-
             }
             else{
                 System.err.println("dåligt val");
@@ -47,7 +46,7 @@ public class ViewControl extends JFrame implements ActionListener {
         else{
             if(clickedBtn.isSelected()){
                 clickedBtn.setSelected(false);
-                clickedBtn.setBackground(Color.white);
+                clickedBtn.setBackground(clickedBtn.getColor());
                 this.game.chosenPiece = null;
                 this.game.counter --;
             }
@@ -57,26 +56,35 @@ public class ViewControl extends JFrame implements ActionListener {
                     clickedBtn.setIcon(this.game.chosenPiece.getImg());
 
                     this.game.board.matrix[game.startPos[0]][game.startPos[1]] = null;
-                    this.board[this.game.startPos[0]][this.game.startPos[1]].setBackground(Color.white);
+                    this.board[startX][startY].setBackground(this.game.colorPicker(startX, startY));
+                    this.board[this.game.startPos[0]][this.game.startPos[1]].setSelected(false);
 
+                    this.game.chosenPiece = null;
+
+                    System.err.println("moveMade");
                     this.game.counter --;
                 }
                 else{
                     System.err.println("no move made");
                 }
             }
-            System.err.println(game.moveSucess);
+            //System.err.println(game.moveSucess);
         }
-        System.err.println("white's turn: " + this.game.whitesTurn);
+        //System.err.println("white's turn: " + this.game.whitesTurn);
+        System.err.println("counter: " +  game.counter);
+        //System.err.println("chosen piece: " +  game.chosenPiece.toString());
+
         this.rePaintFrame();
     }
 
     private void add_buttons(){
         for(int i=0; i<this.n; i++){
             for(int j=0; j<this.n; j++){
-                this.board[i][j] = new Btn(i, j);
-                this.board[i][j].addActionListener(this);
-                this.board[i][j].setBackground(Color.white);
+                Btn newBtn  = new Btn(i, j);
+                newBtn.addActionListener(this);
+                newBtn.setColor(this.game.colorPicker(i, j));
+                newBtn.setBackground(newBtn.getColor());
+                this.board[i][j] = newBtn;
                 this.panel.add(this.board[i][j]);
             }
         }

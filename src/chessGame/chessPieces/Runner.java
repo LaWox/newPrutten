@@ -1,7 +1,5 @@
 package chessGame.chessPieces;
 
-import javax.swing.*;
-
 public class Runner extends SchessPiece {
 
     public Runner(String color){
@@ -11,6 +9,13 @@ public class Runner extends SchessPiece {
     }
 
     public boolean checkMove(int startx, int startY, int endX, int endY ){
-        return true;
+        try{
+            return (Math.abs(startY-endY) / Math.abs(startx-endX))==1;
+        }
+        //ogiltigt drag ifall derivatan blir 0
+        catch (ArithmeticException e ){
+            return false;
+        }
+
     }
 }
