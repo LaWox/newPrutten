@@ -7,7 +7,7 @@ public class MyButton extends JButton implements ActionListener {
     // Git-test
     State state1;
     State state2;
-    JButton myBtn;
+    public JButton myBtn;
 
     public MyButton(Color c1, Color c2, String s1, String s2) {
         this.state1= new State(c1, s1);
@@ -41,6 +41,10 @@ public class MyButton extends JButton implements ActionListener {
         this.state1.active = !this.state1.active;
         this.state2.active = !this.state2.active;
         this.myBtn.validate();
+    }
+
+    public JButton getBtn(){
+        return this.myBtn;
     }
 
     public void actionPerformed(ActionEvent e){

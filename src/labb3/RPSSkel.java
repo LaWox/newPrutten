@@ -1,5 +1,7 @@
 package labb3;
 
+import Labb1.MyButton;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -19,10 +21,19 @@ public class RPSSkel extends JFrame {
     AudioInputStream audio;
     Clip clip;
 
+    MyButton soundBtn;
+    private boolean playSound;
+
     RPSSkel () {
         numbersInText = new String[]{"One!", "Two!"};
         counter = 0;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        soundBtn = new MyButton(Color.green, Color.red, "SOund/ON", "Sound/OFF");
+        soundBtn.myBtn.addActionListener(new ToggleSound());
+        playSound = true;
+
+
         closebutton = new JButton("Close");
         closebutton.addActionListener(new Close());
 
@@ -35,6 +46,8 @@ public class RPSSkel extends JFrame {
         boards.add(computersboard);
         add(boards, BorderLayout.CENTER);
         add(closebutton, BorderLayout.SOUTH);
+        add(soundBtn.getBtn(), BorderLayout.NORTH);
+
         setSize(300, 550);
         setVisible(true);
 
@@ -44,8 +57,6 @@ public class RPSSkel extends JFrame {
         catch (Exception e){
             System.err.println(e);
         }
-
-
     }
 
     class Close implements ActionListener {
@@ -54,6 +65,12 @@ public class RPSSkel extends JFrame {
             model.out.println("");
             model.out.flush();
             System.exit(0);
+        }
+    }
+
+    class ToggleSound implements ActionListener{
+        public void actionPerformed(ActionEvent ae){
+            playSound = !playSound;
         }
     }
 
@@ -103,14 +120,18 @@ public class RPSSkel extends JFrame {
                     computersboard.setLower(result);
                     myboard.setLower(result);
                 }
-                audio = Sound.getSound(result);
-                try{
-                    clip.open(audio);
-                    clip.start();
+
+                if(playSound){
+                    audio = Sound.getSound(result);
+                    try{
+                        clip.open(audio);
+                        clip.start();
+                    }
+                    catch (Exception ex){
+                        System.err.println(ex);
+                    }
                 }
-                catch (Exception ex){
-                    System.err.println(ex);
-                }
+
 
 
 
