@@ -9,19 +9,37 @@ public class ViewControl extends JFrame implements ActionListener {
 
     private ChessGame game;
     private JButton[][] board;
+    private JPanel contentPanel;
     private JLabel mess = new JLabel();
+    private JLabel titel;
     private JPanel panel;
     private int n;
     private JFrame frame;
+    private GridBagConstraints c;
 
 
     ViewControl(ChessGame gm, int size){
         this.game=gm;
         this.n = size;
+
+        //MainFrame
         this.frame = new JFrame("Game");
-        this.panel = new JPanel();
-        this.panel.setLayout(new GridLayout(size,size));
+
+        // Content
+        this.titel = new JLabel(this.game.gameName);
+        this.panel = new JPanel(new GridLayout(size,size));
+
+        // Panel to Store Content
+        this.contentPanel = new JPanel(new GridBagLayout());
+        this.c = new GridBagConstraints();
+
+        // Stores Btns
         this.board =  new JButton[size][size];
+    }
+
+    // TODO: Skapa layouten här istället för att ha allt i main
+    private void initGame(){
+
     }
 
     public void actionPerformed(ActionEvent e){
@@ -117,18 +135,33 @@ public class ViewControl extends JFrame implements ActionListener {
         vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vc.frame.setSize(new Dimension(700, 700));
 
+
         vc.add_buttons();
 
-        vc.frame.add(vc.panel);
+        // Add Titel
+        vc.c.gridheight = 1;
+        vc.c.gridwidth = 4;
 
-        vc.panel.setVisible(true);
+        vc.c.gridx = 0;
+        vc.c.gridy = 0;
+
+        vc.contentPanel.add(vc.titel, vc.c);
+
+        // Add Board
+        vc.c.gridheight = 4;
+        vc.c.gridwidth = 4;
+
+        vc.c.gridx = 0;
+        vc.c.gridy = 1;
+
+        vc.contentPanel.add(vc.panel, vc.c);
+
+        // Add all in main Frame
+        vc.frame.add(vc.contentPanel);
+
         vc.frame.setVisible(true);
 
-        vc.panel.setOpaque(true);
-        vc.panel.validate();
-        vc.panel.repaint();
-        vc.panel.revalidate();
         vc.rePaintFrame();
-        vc.frame.validate();
+
     }
 }

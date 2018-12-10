@@ -3,6 +3,7 @@ package chessGame;
 import chessGame.chessPieces.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Scanner;
 
 public class ChessGame extends Boardgame{
@@ -12,6 +13,7 @@ public class ChessGame extends Boardgame{
     boolean moveSucess;
     private boolean whitesTurn;
     int counter;
+    String gameName;
 
     ChessGame(){
         this.board = new ChessBoard();
@@ -21,6 +23,7 @@ public class ChessGame extends Boardgame{
         this.whitesTurn = true;
         this.counter = 0;
         this.chosenPiece = null;
+        this.gameName = "Chess";
     }
 
     public void setStartPos(int x,  int y){  //sätter den valda startPositionen
@@ -155,4 +158,59 @@ public class ChessGame extends Boardgame{
             return Color.white;
         }
     }
+
+    /*
+    public void takeAction(ActionEvent e){
+        Btn clickedBtn = (Btn) e.getSource();
+        int x = clickedBtn.getX();
+        int y = clickedBtn.getY();
+        int startX = this.startPos[0];
+        int startY = this.startPos[1];
+
+        if(counter == 0){
+            if(this.startOk(x , y)){
+                this.setStartPos(x, y);
+                clickedBtn.setBackground(Color.green);
+                clickedBtn.setSelected(true);
+                this.chosenPiece = this.getStatus(x, y);
+                this.counter ++;
+            }
+            else{
+                System.err.println("dåligt val");
+            }
+        }
+        else{
+            if(clickedBtn.isSelected()){
+                clickedBtn.setSelected(false);
+                clickedBtn.setBackground(clickedBtn.getColor());
+                this.chosenPiece = null;
+                this.counter --;
+            }
+            else{
+                if(this.moveOk(x, y)){
+                    this.makeMove(x, y);
+                    clickedBtn.setIcon(this.chosenPiece.getImg());
+
+                    this.board.matrix[this.startPos[0]][this.startPos[1]] = null;
+                    this.board[startX][startY].setBackground(this.colorPicker(startX, startY));
+                    this.board[this.startPos[0]][this.startPos[1]].setSelected(false);
+
+                    this.chosenPiece = null;
+
+                    System.err.println("moveMade");
+                    this.counter --;
+                }
+                else{
+                    System.err.println("no move made");
+                }
+            }
+            //System.err.println(game.moveSucess);
+        }
+        //System.err.println("white's turn: " + this.game.whitesTurn);
+        System.err.println("counter: " +  this.counter);
+        //System.err.println("chosen piece: " +  game.chosenPiece.toString());
+
+        this.rePaintFrame();
+    }
+    */
 }
