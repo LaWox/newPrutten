@@ -24,7 +24,7 @@ public class MyButton extends JButton implements ActionListener {
     }
 
     public String toString(){
-        return this.state2 + " : " + this.state2;
+        return this.state1 + " : " + this.state2;
     }
 
     public void toggleState(){
@@ -45,10 +45,6 @@ public class MyButton extends JButton implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         this.toggleState(); }
-
-    /* public String toString(){
-        return state1.getBackground();
-    } */
 
 }
 

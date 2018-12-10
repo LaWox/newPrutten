@@ -12,8 +12,8 @@ public class uppgift1 extends JFrame {
         this.panel=new JPanel();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel.setBackground(Color.green);
-        window.setSize(new Dimension(500, 700));
-        //window.add(panel);
+        window.setSize(new Dimension(300, 400));
+        window.add(panel);
         window.setVisible(true);
 
     }
