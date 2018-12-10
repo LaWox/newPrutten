@@ -16,6 +16,8 @@ public class RPSSkel extends JFrame {
     PrintWriter out;
     JButton closebutton;
     String[] numbersInText;
+    AudioInputStream audio;
+    Clip clip;
 
     RPSSkel () {
         numbersInText = new String[]{"One!", "Two!"};
@@ -35,6 +37,15 @@ public class RPSSkel extends JFrame {
         add(closebutton, BorderLayout.SOUTH);
         setSize(300, 550);
         setVisible(true);
+
+        try{
+            this.clip = AudioSystem.getClip();
+        }
+        catch (Exception e){
+            System.err.println(e);
+        }
+
+
     }
 
     class Close implements ActionListener {
@@ -51,6 +62,7 @@ public class RPSSkel extends JFrame {
             //System.out.println(model);
             //System.out.println(e.getActionCommand());
             if(counter == 0){
+                clip.close();
                 myboard.resetColor();
                 computersboard.resetColor();
                 myboard.setUpper("RPS");
@@ -91,6 +103,17 @@ public class RPSSkel extends JFrame {
                     computersboard.setLower(result);
                     myboard.setLower(result);
                 }
+                audio = Sound.getSound(result);
+                try{
+                    clip.open(audio);
+                    clip.start();
+                }
+                catch (Exception ex){
+                    System.err.println(ex);
+                }
+
+
+
             }
 
             else{
@@ -108,9 +131,9 @@ public class RPSSkel extends JFrame {
 }
 
 class Sound {
-    
+
     public static AudioInputStream getSound(String gameState){
-        File soundFile = new File("path" + gameState + "mp3");
+        File soundFile = new File("C:\\Users\\Dell\\Desktop\\KTH\\PruttenProjekt\\src\\labb3\\" + gameState + ".wav");
         try{
             return AudioSystem.getAudioInputStream(soundFile);
         }
