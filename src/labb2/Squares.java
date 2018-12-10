@@ -5,8 +5,8 @@ import javax.swing.*;
 public class Squares extends JButton {
 
     private JButton button;
-    private int i;
-    private int j;
+    public int i;
+    public int j;
 
 
     public Squares(int i, int j){

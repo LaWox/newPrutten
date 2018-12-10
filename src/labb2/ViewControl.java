@@ -16,15 +16,19 @@ public class ViewControl extends JFrame implements ActionListener {
 
     ViewControl (Boardgame gm, int n){
         this.n = n;
-        //this.game=gm;
+        this.game=gm;
         this.frame = new JFrame("Game");
         this.board = new Squares[n][n];
         this.panel = new JPanel(new GridLayout(n,n));
+        this.init();
 
     }
 
     public void actionPerformed(ActionEvent e){
-        System.out.println(this);
+        Squares square = (Squares) e.getSource();
+        game.move( square.i,square.j );
+        this.rePaint();
+
     }
 
     private void add_buttons(){
@@ -51,19 +55,23 @@ public class ViewControl extends JFrame implements ActionListener {
         this.frame.validate();
     }
 
+    private void init(){
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setSize(new Dimension(500, 500));
+        this.frame.setVisible(true);
+
+        this.panel.setVisible(true);
+        this.panel.setBackground(Color.BLUE);
+
+        this.add_buttons();
+
+        this.frame.add(this.panel);
+        this.rePaint();
+        this.frame.validate();
+
+    }
+
     public static void main(String[] arg){
-        ViewControl vc = new ViewControl(null, 4);
-        vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vc.frame.setSize(new Dimension(500, 500));
-        vc.frame.setVisible(true);
 
-        vc.panel.setVisible(true);
-        vc.panel.setBackground(Color.BLUE);
-
-        vc.add_buttons();
-
-        vc.frame.add(vc.panel);
-        //vc.rePaint();
-        vc.frame.validate();
     }
 }
