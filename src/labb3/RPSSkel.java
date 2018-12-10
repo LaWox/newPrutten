@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.net.*;
 import java.io.*;
-import java.util.*;
+import javax.sound.sampled.*;
 
 public class RPSSkel extends JFrame {
     GameBoard myboard, computersboard;
@@ -47,7 +47,6 @@ public class RPSSkel extends JFrame {
     }
 
     class Action implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
             //System.out.println(model);
             //System.out.println(e.getActionCommand());
@@ -105,9 +104,20 @@ public class RPSSkel extends JFrame {
 
     public static void main (String[] u) {
         RPSSkel skel = new RPSSkel();
-
-
-
-
     }
+}
+
+class Sound {
+    
+    public static AudioInputStream getSound(String gameState){
+        File soundFile = new File("path" + gameState + "mp3");
+        try{
+            return AudioSystem.getAudioInputStream(soundFile);
+        }
+        catch (Exception e){
+            System.err.println(e);
+        }
+        return null;
+    }
+
 }

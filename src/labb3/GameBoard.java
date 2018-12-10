@@ -5,9 +5,9 @@ import java.awt.event.*;
 import javax.swing.*;
 class GameBoard extends JPanel {
 
-    private Icon[] icons = {new ImageIcon("labb3/rock.gif"),
-            new ImageIcon("labb3/paper.gif"),
-            new ImageIcon("labb3/scissors.gif")};
+    private Icon[] icons = {new ImageIcon("C:\\Users\\Dell\\Desktop\\KTH\\PruttenProjekt\\src\\labb3\\rock.gif"),
+            new ImageIcon("C:\\Users\\Dell\\Desktop\\KTH\\PruttenProjekt\\src\\labb3\\paper.gif"),
+            new ImageIcon("C:\\Users\\Dell\\Desktop\\KTH\\PruttenProjekt\\src\\labb3\\scissors.gif")};
 
     private JButton[] buttons = new JButton[3];
     private JButton lastPlayed; // remembers last chosen button/gesture
