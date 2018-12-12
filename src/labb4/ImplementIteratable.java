@@ -9,7 +9,7 @@ public class ImplementIteratable extends Composite implements Iterable<Component
 
     ImplementIteratable(double weight, String name){
         super(weight, name);
-        this.array = getWidth();
+        //this.array = getWidth();
     }
 
     public ArrayList<Component> getWidth(){
@@ -29,7 +29,6 @@ public class ImplementIteratable extends Composite implements Iterable<Component
 
     public Iterator<Component> iterator() {
         Iterator<Component> iter = new Iterator<>() {
-            ArrayList<Component> compArray = getWidth();
 
             private int index = 0;
             private int size = getSize();
@@ -43,7 +42,7 @@ public class ImplementIteratable extends Composite implements Iterable<Component
             public Component next() {
                 if(this.hasNext()){
                     index ++;
-                    return compArray.get(index-1);
+                    return array.get(index-1);
                 }
                 return null;
             }
@@ -89,6 +88,8 @@ public class ImplementIteratable extends Composite implements Iterable<Component
         tShirt.add(kniv);
 
         //System.err.println(resvaska.getSize());
+
+        resvaska.array = resvaska.getWidth();
 
         for (Component comp: resvaska) {
             System.out.println("component: " + comp.name);
