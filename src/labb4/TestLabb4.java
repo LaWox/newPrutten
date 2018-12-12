@@ -4,7 +4,6 @@ public class TestLabb4 {
 
     public static void main (String[] args){
 
-        /* Leaf gras = new Leaf() */
         /*Composites*/
         Composite resvaska = new Composite(1.2, "resväska");
         Composite necessar = new Composite(0.3, "necessär");

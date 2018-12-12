@@ -21,5 +21,9 @@ public class Leaf extends Component {
     public String toString(){
         return this.name;
     }
+
+    public int getSize() {
+        return 1;
+    }
 }
 

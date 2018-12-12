@@ -7,7 +7,7 @@ public class Composite extends Component {
 
     public Composite(double weight, String name){
         super(weight, name);
-        this.childList = new ArrayList<>();
+        this.childList = new ArrayList<Component>();
     }
 
     public void add(Component c){
@@ -33,6 +33,14 @@ public class Composite extends Component {
             currentString += "\n" + this.childList.get(i).toString();
         }
         return currentString;
+    }
+
+    public int getSize(){
+        int currSize = 1;
+        for(int i = 0; i < this.childList.size(); i ++){
+            currSize += this.childList.get(i).getSize();
+        }
+        return currSize;
     }
 
 }

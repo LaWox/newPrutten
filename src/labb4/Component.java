@@ -19,4 +19,5 @@ public abstract class Component {
 
     public abstract String toString();
 
+    public abstract int getSize();
 }
