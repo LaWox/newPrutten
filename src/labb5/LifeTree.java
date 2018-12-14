@@ -70,9 +70,20 @@ public class LifeTree extends TreeFrame {
     void showDetails(TreePath path){
         if (path == null)
             return;
+
+        StringBuilder builder = new StringBuilder();
         String name = path.getLastPathComponent().toString();
         Element node = nodeMap.get(name);
-        JOptionPane.showMessageDialog(this, getInfo(node));
+        builder.append(getInfo(node));
+        builder.append("\n"+"Men allt som ");
+
+        while(path != null){
+            name = path.getLastPathComponent().toString();
+            node = nodeMap.get(name);
+            builder.append(" är "+ node.getAttributes().get(0).getValue());
+            path=path.getParentPath();
+        }
+        JOptionPane.showMessageDialog(this, builder);
     }
 
     private String getInfo(Element e){
