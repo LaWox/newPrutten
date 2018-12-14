@@ -17,7 +17,6 @@ public class ChessGame extends Boardgame{
 
     ChessGame(){
         this.board = new ChessBoard();
-        this.board.setUp();
         this.startPos = new int[2];
         this.moveSucess = false;
         this.whitesTurn = true;

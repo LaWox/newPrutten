@@ -6,10 +6,10 @@ import java.awt.event.*;
 
 public class Btn extends JButton implements ActionListener{
 
-    int x;
-    int y;
-    boolean selected;
-    Color color;
+    private int x;
+    private int y;
+    private boolean selected;
+    private Color color;
 
     public Btn(int row, int col){
         this.x = row;

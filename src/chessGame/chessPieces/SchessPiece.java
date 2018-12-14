@@ -36,9 +36,6 @@ public abstract class SchessPiece {
     }
 
     public void setImg(){
-        //chessGame/chessPieces/chessIcons/Bonde-black.png
-        //C:\Users\Dell\Desktop\KTH\PruttenProjekt\src\chessGame\chessPieces\chessIcons\Bonde-black.png
-        //System.err.println("chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
         this.img = new ImageIcon("C:/Users/Dell/Desktop/KTH/PruttenProjekt/src/chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
     }
 

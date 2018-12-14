@@ -8,13 +8,14 @@ public class ChessBoard {
 
     ChessBoard(){
         this.matrix = new SchessPiece[size][size];
+        this.setUp();
     }
 
     public int getSize(){
         return size;
     }
 
-    public void setUp(){
+    private void setUp(){
         for(int row = 0; row < 2; row ++){
             for(int col = 0; col < 8; col ++){
                 if(row == 1){

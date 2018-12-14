@@ -10,13 +10,12 @@ public class ViewControl extends JFrame implements ActionListener {
     private ChessGame game;
     private JButton[][] board;
     private JPanel contentPanel;
-    private JLabel mess = new JLabel();
+    private JLabel mess;
     private JLabel titel;
     private JPanel panel;
     private int n;
     private JFrame frame;
     private GridBagConstraints c;
-
 
     ViewControl(ChessGame gm, int size){
         this.game=gm;
@@ -32,6 +31,9 @@ public class ViewControl extends JFrame implements ActionListener {
         // Panel to Store Content
         this.contentPanel = new JPanel(new GridBagLayout());
         this.c = new GridBagConstraints();
+
+        // Messege
+        this.mess = new JLabel("Ett spännande meddelande");
 
         // Stores Btns
         this.board =  new JButton[size][size];
@@ -58,7 +60,7 @@ public class ViewControl extends JFrame implements ActionListener {
                 game.counter ++;
             }
             else{
-                System.err.println("dåligt val");
+                this.mess.setText("Dåligt val");
             }
         }
         else{
@@ -79,11 +81,11 @@ public class ViewControl extends JFrame implements ActionListener {
 
                     this.game.chosenPiece = null;
 
-                    System.err.println("moveMade");
+                    this.mess.setText("Draget genomfördes");;
                     this.game.counter --;
                 }
                 else{
-                    System.err.println("no move made");
+                    this.mess.setText("Inget drag");;
                 }
             }
             //System.err.println(game.moveSucess);
@@ -140,7 +142,7 @@ public class ViewControl extends JFrame implements ActionListener {
 
         // Add Titel
         vc.c.gridheight = 1;
-        vc.c.gridwidth = 4;
+        vc.c.gridwidth = 2;
 
         vc.c.gridx = 0;
         vc.c.gridy = 0;
@@ -155,6 +157,15 @@ public class ViewControl extends JFrame implements ActionListener {
         vc.c.gridy = 1;
 
         vc.contentPanel.add(vc.panel, vc.c);
+
+        // Add messegePanel
+        vc.c.gridheight = 1;
+        vc.c.gridwidth = 2;
+
+        vc.c.gridx = 2;
+        vc.c.gridy = 5;
+
+        vc.contentPanel.add(vc.mess, vc.c);
 
         // Add all in main Frame
         vc.frame.add(vc.contentPanel);
