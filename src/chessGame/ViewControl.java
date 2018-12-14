@@ -9,9 +9,9 @@ public class ViewControl extends JFrame implements ActionListener {
 
     private ChessGame game;
     private JButton[][] board;
-    private JLabel mess;
     private int n;
     private JFrame frame;
+    private JPanel main_panel;
 
     ViewControl(ChessGame gm, int size){
         this.game=gm;
@@ -19,11 +19,11 @@ public class ViewControl extends JFrame implements ActionListener {
 
         this.frame = new JFrame(game.gameName);
 
-        // Messege
-        this.mess = new JLabel("Ett spännande meddelande");
-
         // Stores Btns
         this.board =  new JButton[size][size];
+
+        // Panel
+        //this.main_panel=new JPanel(new GridBagLayout());
     }
 
     // TODO: Skapa layouten här istället för att ha allt i main
@@ -69,7 +69,6 @@ public class ViewControl extends JFrame implements ActionListener {
 
                     this.game.chosenPiece = null;
 
-                    this.mess.setText("Draget genomfördes");;
                     this.game.counter --;
                 }
                 else{
@@ -89,6 +88,7 @@ public class ViewControl extends JFrame implements ActionListener {
                 newBtn.setColor(this.game.colorPicker(i, j));
                 newBtn.setBackground(newBtn.getColor());
                 this.board[i][j] = newBtn;
+                //this.main_panel.add(this.board[i][j]);
                 this.frame.add(this.board[i][j]);
             }
         }
@@ -124,36 +124,9 @@ public class ViewControl extends JFrame implements ActionListener {
         vc.frame.setLayout(new GridLayout(size, size));
 
         vc.add_buttons();
+        //vc.frame.add(vc.main_panel);
         vc.frame.setVisible(true);
-        //vc.frame.getContentPane().add(vc.contentPanel);
 
-        /*
-        // Add Board
-        vc.c.gridheight = 4;
-        vc.c.gridwidth = 4;
-
-        vc.c.gridx = 0;
-        vc.c.gridy = 0;
-
-        vc.contentPanel.add(vc.panel, vc.c);
-
-        // Add messegePanel
-        vc.c.gridheight = 1;
-        vc.c.gridwidth = 4;
-
-        vc.c.gridx = 2;
-        vc.c.gridy = 4;
-
-        vc.contentPanel.add(vc.mess, vc.c);
-
-        // Add all in main Frame
-        vc.frame.setVisible(true);
-        vc.panel.setVisible(true);
-        //vc.contentPanel.setBackground(Color.green);
-
-        vc.add_buttons();
-        */
-        //vc.panel.validate();
 
         vc.rePaintFrame();
 
