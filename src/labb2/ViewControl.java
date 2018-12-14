@@ -67,7 +67,6 @@ public class ViewControl extends JFrame implements ActionListener {
 
         this.frame.add(this.panel);
         this.rePaint();
-        this.frame.validate();
 
     }
 
