@@ -24,6 +24,7 @@ public class ViewControl extends JFrame implements ActionListener {
 
         //MainFrame
         this.frame = new JFrame("Game");
+        //this.frame.getContentPane().setLayout(new GridLayout());
 
         // Content
         this.titel = new JLabel(this.game.gameName);
