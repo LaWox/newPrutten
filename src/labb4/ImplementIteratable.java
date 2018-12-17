@@ -5,26 +5,34 @@ import java.util.ArrayList;
 
 public class ImplementIteratable extends Composite implements Iterable<Component> {
 
-    ArrayList<Component> array;
+    ArrayList<Component> stack;
 
     ImplementIteratable(double weight, String name){
         super(weight, name);
-        //this.array = getWidth();
+        this.stack = new ArrayList<Component>();
     }
 
-    public ArrayList<Component> getWidth(){
-        ArrayList<Component> array = new ArrayList<>();
-        array.add(this);
-        System.err.println("size: " + this.childList.size());
-        for(Component comp: array){
-            if(comp instanceof Composite){
-                for(Component child: ((Composite) comp).childList){
-                    array.add(child);
-                }
+    private void createStack(Component elem){
+        stack.add(elem);
+        if(elem instanceof Composite){
+            for(int i = 0; i < ((Composite) elem).childList.size(); i ++){
+                createStack(((Composite) elem).childList.get(i));
             }
         }
-        System.err.println("sizeArray: " + array.size());
-        return array;
+    }
+
+    private void createStackWidth(int index){
+        Component elem = stack.get(index);
+        if(stack.get(index) instanceof Composite){
+            for(int i = 0; i < ((Composite) elem).childList.size(); i ++){
+                stack.add(((Composite) elem).childList.get(i));
+            }
+            index ++;
+            createStackWidth(index);
+        }
+        else{
+            stack.add(elem);
+        }
     }
 
     public Iterator<Component> iterator() {
@@ -42,7 +50,7 @@ public class ImplementIteratable extends Composite implements Iterable<Component
             public Component next() {
                 if(this.hasNext()){
                     index ++;
-                    return array.get(index-1);
+                    return stack.get(index-1);
                 }
                 return null;
             }
@@ -87,9 +95,21 @@ public class ImplementIteratable extends Composite implements Iterable<Component
 
         tShirt.add(kniv);
 
-        //System.err.println(resvaska.getSize());
+        resvaska.createStack(resvaska);
 
-        resvaska.array = resvaska.getWidth();
+        /* Bredden först
+        resvaska.stack.add(resvaska);
+        resvaska.createStackWidth(0);
+        */
+
+
+        Iterator iter = resvaska.iterator();
+
+        while(iter.hasNext()){
+            System.out.println((iter.next()));
+        }
+
+        System.out.println("-------------------------------------------");
 
         for (Component comp: resvaska) {
             System.out.println("component: " + comp.name);

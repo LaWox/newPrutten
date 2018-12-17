@@ -27,12 +27,15 @@ public class Composite extends Component {
     }
 
     public String toString(){
+        /*
         String currentString = this.name;
 
         for(int i = 0; i < this.childList.size(); i++){
             currentString += "\n" + this.childList.get(i).toString();
         }
         return currentString;
+        */
+        return this.name;
     }
 
     public int getSize(){
