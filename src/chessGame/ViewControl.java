@@ -83,6 +83,9 @@ public class ViewControl extends JFrame implements ActionListener {
                 Btn newBtn  = new Btn(i, j);
                 newBtn.setVisible(true);
                 newBtn.addActionListener(this);
+                //For mac:
+                newBtn.setOpaque(true);
+                
                 newBtn.setColor(this.game.colorPicker(i, j));
                 newBtn.setBackground(newBtn.getColor());
                 this.board[i][j] = newBtn;
