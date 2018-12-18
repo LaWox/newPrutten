@@ -85,7 +85,7 @@ public class ViewControl extends JFrame implements ActionListener {
                 newBtn.addActionListener(this);
                 //For mac:
                 newBtn.setOpaque(true);
-                
+
                 newBtn.setColor(this.game.colorPicker(i, j));
                 newBtn.setBackground(newBtn.getColor());
                 this.board[i][j] = newBtn;
@@ -116,21 +116,16 @@ public class ViewControl extends JFrame implements ActionListener {
     }
 
     private void init(){
-
-
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setSize(new Dimension(700, 700));
         //vc.frame.setLayout(new GridLayout(size, size));
         this.frame.setVisible(true);
 
-
         this.add_buttons();
-
 
         this.frame.add(this.main_panel);
 
         this.rePaintFrame();
-
     }
 
     public static void main(String[] arg){
