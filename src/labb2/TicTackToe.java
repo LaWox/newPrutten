@@ -13,8 +13,6 @@ public class TicTackToe implements Boardgame{
     public TicTackToe(int size) {
         this.board= new String[size][size];
         this.moveCompleted = false;
-        this.x=x;
-        this.y=y;
         this.size=size;
         this.turn=true;
         this.count=0;
