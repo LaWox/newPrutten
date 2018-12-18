@@ -23,18 +23,16 @@ public class ViewControl extends JFrame implements ActionListener {
         this.board =  new JButton[size][size];
 
         // Panel
-        //this.main_panel=new JPanel(new GridBagLayout());
-    }
+        this.main_panel=new JPanel(new GridLayout(size,size));
 
-    // TODO: Skapa layouten här istället för att ha allt i main
-    private void initGame(){
-
+        //Initiate
+        this.init();
     }
 
     public void actionPerformed(ActionEvent e){
         Btn clickedBtn = (Btn) e.getSource();
-        int x = clickedBtn.getX();
-        int y = clickedBtn.getY();
+        int x = clickedBtn.getGridX();
+        int y = clickedBtn.getGridY();
         int startX = this.game.startPos[0];
         int startY = this.game.startPos[1];
 
@@ -88,8 +86,7 @@ public class ViewControl extends JFrame implements ActionListener {
                 newBtn.setColor(this.game.colorPicker(i, j));
                 newBtn.setBackground(newBtn.getColor());
                 this.board[i][j] = newBtn;
-                //this.main_panel.add(this.board[i][j]);
-                this.frame.add(this.board[i][j]);
+                this.main_panel.add(this.board[i][j]);
             }
         }
     }
@@ -99,10 +96,12 @@ public class ViewControl extends JFrame implements ActionListener {
             for(int j=0; j<this.n; j++){
                     if(this.game.getStatus(i, j) != null){
                         this.board[i][j].setIcon(this.game.getStatus(i, j).getImg());
+                        this.main_panel.add(this.board[i][j]);
                     }
                     else{
                         this.board[i][j].setIcon(null);
                         this.board[i][j].setText("");
+                        this.main_panel.add(this.board[i][j]);
                     }
                 }
             }
@@ -113,22 +112,27 @@ public class ViewControl extends JFrame implements ActionListener {
         this.frame.validate();
     }
 
+    private void init(){
+
+
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setSize(new Dimension(700, 700));
+        //vc.frame.setLayout(new GridLayout(size, size));
+        this.frame.setVisible(true);
+
+
+        this.add_buttons();
+
+
+        this.frame.add(this.main_panel);
+
+        this.rePaintFrame();
+
+    }
+
     public static void main(String[] arg){
         ChessGame game = new ChessGame();
         int size = game.board.getSize();
-
         ViewControl vc = new ViewControl(game, size);
-
-        vc.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vc.frame.setSize(new Dimension(700, 700));
-        vc.frame.setLayout(new GridLayout(size, size));
-
-        vc.add_buttons();
-        //vc.frame.add(vc.main_panel);
-        vc.frame.setVisible(true);
-
-
-        vc.rePaintFrame();
-
     }
 }

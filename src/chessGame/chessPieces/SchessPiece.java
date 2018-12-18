@@ -36,7 +36,13 @@ public abstract class SchessPiece {
     }
 
     public void setImg(){
-        this.img = new ImageIcon("C:/Users/Dell/Desktop/KTH/PruttenProjekt/src/chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
+        // For PC
+        //this.img = new ImageIcon("C:/Users/Dell/Desktop/KTH/PruttenProjekt/src/chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
+
+        // For mac:
+        this.img = new ImageIcon("/Users/jussikangas/Documents/GitHub/newPrutten/src/chessGame/chessPieces/chessIcons/" + this.NAME + "-" +  this.color + ".png");
+
+
     }
 
 

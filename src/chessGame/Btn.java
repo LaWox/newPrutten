@@ -26,11 +26,11 @@ public class Btn extends JButton implements ActionListener{
         this.color = color;
     }
 
-    public int getX(){
+    public int getGridX(){
         return this.x;
     }
 
-    public int getY(){
+    public int getGridY(){
         return this.y;
     }
 
